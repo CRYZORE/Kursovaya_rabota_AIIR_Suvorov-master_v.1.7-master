@@ -1,42 +1,46 @@
-version: "2.14.0"
+version: "3"
 services:
- app_server:
-  build:
-   context: .
-   dockerfile: ./Dockerfile
-  container_name: ${APP_CONTAINER_NAME}
-  environment:
-    - ./.env
-  entrypoint: ['uwsgi', 'app_uwsgi.ini']
-  restart: always
- #ports:
- #- "8000:8000"
-  volumes:
-    - static_files:${STATIC_ROOT}
- nginx_server:
-  build:
-    context: .
-    dockerfile: ./nginx/Dockerfile
-  container_name: ${NGINX_SERVER_CONTAINER_NAME}
-  environment:
-    - ./.env
- #ports:
- #- "80:80"
- volumes:
- - static_files:${STATIC_PATH_NGINX}
-depends_on:
-  - app_server
-http_client:
- build:
- context: .
- dockerfile: ./http-client/Dockerfile
- container_name: ${CLIENT_CONTAINER_NAME}
- environment:
- - ./.env
- ports:
- - "80:80"
- depends_on:
- - app_server
- - nginx_server
+  app_server:
+    build:
+     context: .
+     dockerfile: ./Dockerfile
+    container_name: ${APP_CONTAINER_NAME}
+    environment:
+      - .env
+    entrypoint: ['uwsgi', 'app_uwsgi.ini']
+    restart: always
+    #ports:
+      #- "8000:8000"
+    volumes:
+      - static_files:${STATIC_ROOT}
+
+  nginx_server:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    container_name: ${NGINX_SERVER_CONTAINER_NAME}
+    environment:
+      - .env
+    #entrypoint:
+    #ports:
+      #- "80:80"
+    volumes:
+      - static_files:${STATIC_PATH_NGINX}
+    depends_on:
+      - app_server
+
+  http_client:
+    build:
+      context: .
+      dockerfile: ./http-client/Dockerfile
+    container_name: ${CLIENT_CONTAINER_NAME}
+    environment:
+    - .env
+    ports:
+      - "80:80"
+    depends_on:
+      - app_server
+      - nginx_server
+
 volumes:
- static_files:
+  static_files:

@@ -10,5 +10,12 @@
       <jdbc-url>jdbc:sqlite:C:\Users\wwwse\PycharmProjects\PRACTISE-9\pr9\db.sqlite3</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="db" uuid="bffac747-9ec2-4d7c-a1d8-78d9469d7839">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\CRYZORE\Downloads\Kursovaya_rabota_AIIR_Suvorov-master_v.1.6-master\Kursovaya_rabota_AIIR_Suvorov-master_v.1.6-master\db.sqlite3</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
