@@ -1,0 +1,54 @@
+openapi: 3.0.3
+info:
+  title: Replacer API
+  version: '1.2'
+paths:
+  /api/{s}:
+    get:
+      operationId: api_retrieve
+      parameters:
+      - in: path
+        name: s
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                description: 'Text replace successfully'
+                title: Sample
+                type: object
+                $ref: '#/components/schemas/Replacer'
+
+components:
+  schemas:
+    Replacer:
+      type: object
+      properties:
+        first_operand:
+          type: string
+        result:
+          type: string
+        operation:
+          type: string
+          maxLength: 20
+      required:
+      - first_operand
+      - operation
+      - result
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
