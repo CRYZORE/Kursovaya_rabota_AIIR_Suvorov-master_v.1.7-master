@@ -3,8 +3,8 @@
     <title>App page</title>
 </head>
 <body>
-    <h2>App page</h2>
-    <h3>Replace Text:</h3>
+    <h2>Замена текстовых выражений</h2>
+    <h3>В качестве примера работы функции слово дождь меняется на снег:</h3>
     <?php
     if (isset($_POST['s'])){
         $myCurl = curl_init();
@@ -21,7 +21,7 @@
     }
     ?>
     <form action="index.php" method="post">
-    <label for="first_operand">First operand </label>
+    <label for="first_operand">Слово для замены: </label>
     <input type="text" name="s" id="s" required>
     <input type="submit" value="RUN!">
 </body>

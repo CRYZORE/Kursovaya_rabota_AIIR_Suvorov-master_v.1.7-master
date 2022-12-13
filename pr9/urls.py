@@ -19,10 +19,10 @@ from django.urls import path, include
 
 
 from pr9 import views
-from summary import views
+from ReplaceTextApp import views
 from api import views
 from . import settings
-from summary.views import index
+from ReplaceTextApp.views import index
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
@@ -30,7 +30,7 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="functional"),
-    path('summary/', include('summary.urls')),
+    path('ReplaceTextApp/', include('ReplaceTextApp.urls')),
     path('api/<str:s>', views.ReplacerView.as_view(), name="Replacer"),
     path('schema/', SpectacularAPIView.as_view(), name="schema"),
     path(

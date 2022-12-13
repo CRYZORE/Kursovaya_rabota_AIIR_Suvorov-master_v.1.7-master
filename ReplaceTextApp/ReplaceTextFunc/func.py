@@ -1,9 +1,9 @@
-import re
 from PIL import Image
 import base64
+import re
 
 
-def summary(s):
+def replacing(s):
     return re.sub(r'дождь', replacer, s)
 
 
